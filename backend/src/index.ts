@@ -58,16 +58,20 @@ app.use(
 );
 
 // CORS — accepte plusieurs origines (frontend + dashboard + dev)
+// Mettre ALLOWED_ORIGINS="*" pour tout accepter (utile en démo/staging).
 const allowedOrigins = (process.env.ALLOWED_ORIGINS || process.env.FRONTEND_URL || "http://localhost:3000")
   .split(",")
   .map((s) => s.trim())
   .filter(Boolean);
+
+const allowAll = allowedOrigins.includes("*");
 
 app.use(
   cors({
     origin: (origin, callback) => {
       // Autoriser requêtes server-to-server (Stripe webhooks, curl…) — pas d'origin
       if (!origin) return callback(null, true);
+      if (allowAll) return callback(null, true);
       if (allowedOrigins.includes(origin)) return callback(null, true);
       console.warn(`[CORS] blocked origin: ${origin}`);
       return callback(new Error("Not allowed by CORS"));

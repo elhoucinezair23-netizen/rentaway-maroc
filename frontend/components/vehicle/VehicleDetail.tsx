@@ -17,6 +17,7 @@ import { SingleLocationMap } from "./SingleLocationMap";
 import { VehicleReviews } from "./VehicleReviews";
 import { useTranslation } from "react-i18next";
 import "@/lib/i18n";
+import { CATEGORY_FALLBACK } from "@/lib/imageFallback";
 
 const CATEGORY_ICONS = { VOITURE: Car, MOTO: Bike, BATEAU: Anchor, JETSKI: Waves };
 const CATEGORY_LABELS = { VOITURE: "Voiture", MOTO: "Moto", BATEAU: "Bateau", JETSKI: "Jet-ski" };
@@ -27,8 +28,12 @@ interface VehicleDetailProps {
 
 export function VehicleDetail({ vehicle }: VehicleDetailProps) {
   const [photoIndex, setPhotoIndex] = useState(0);
+  const [brokenImages, setBrokenImages] = useState<Record<number, boolean>>({});
   const { t } = useTranslation();
   const CategoryIcon = CATEGORY_ICONS[vehicle.category];
+  const fallback = CATEGORY_FALLBACK[vehicle.category];
+  const safeSrc = (i: number) =>
+    brokenImages[i] ? fallback : vehicle.images?.[i] || fallback;
 
   const specs = vehicle.specs as Record<string, unknown>;
 
@@ -102,11 +107,15 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
             <div className="relative aspect-[16/10] rounded-2xl overflow-hidden bg-gray-100">
               {vehicle.images?.[photoIndex] ? (
                 <Image
-                  src={vehicle.images[photoIndex]}
+                  src={safeSrc(photoIndex)}
                   alt={`${vehicle.title} - photo ${photoIndex + 1}`}
                   fill
                   className="object-cover"
                   priority
+                  unoptimized
+                  onError={() =>
+                    setBrokenImages((prev) => ({ ...prev, [photoIndex]: true }))
+                  }
                 />
               ) : (
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -151,7 +160,16 @@ export function VehicleDetail({ vehicle }: VehicleDetailProps) {
                     onClick={() => setPhotoIndex(i)}
                     className={`flex-shrink-0 relative h-16 w-24 rounded-lg overflow-hidden border-2 transition-all ${i === photoIndex ? "border-primary-600" : "border-transparent"}`}
                   >
-                    <Image src={img} alt="" fill className="object-cover" />
+                    <Image
+                      src={brokenImages[i] ? fallback : img}
+                      alt=""
+                      fill
+                      className="object-cover"
+                      unoptimized
+                      onError={() =>
+                        setBrokenImages((prev) => ({ ...prev, [i]: true }))
+                      }
+                    />
                   </button>
                 ))}
               </div>

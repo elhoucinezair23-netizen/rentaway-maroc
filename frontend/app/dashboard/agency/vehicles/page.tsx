@@ -114,7 +114,16 @@ export default function AgencyVehiclesPage() {
                 {/* Thumbnail */}
                 <div className="relative w-28 flex-shrink-0 bg-gray-100">
                   {v.images?.[0] ? (
-                    <Image src={v.images[0]} alt={v.title} fill className="object-cover" />
+                    <Image
+                      src={v.images[0]}
+                      alt={v.title}
+                      fill
+                      className="object-cover"
+                      unoptimized
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).style.display = "none";
+                      }}
+                    />
                   ) : (
                     <div className="absolute inset-0 flex items-center justify-center">
                       <Icon className="h-8 w-8 text-gray-300" />

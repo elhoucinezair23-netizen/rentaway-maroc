@@ -130,8 +130,17 @@ function GoogleMapView({
         >
           <div className="w-52">
             {selected.images?.[0] && (
-              <div className="relative h-24 mb-2 rounded-lg overflow-hidden">
-                <Image src={selected.images[0]} alt={selected.title} fill className="object-cover" unoptimized />
+              <div className="relative h-24 mb-2 rounded-lg overflow-hidden bg-gray-100">
+                <Image
+                  src={selected.images[0]}
+                  alt={selected.title}
+                  fill
+                  className="object-cover"
+                  unoptimized
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).style.display = "none";
+                  }}
+                />
               </div>
             )}
             <p className="font-semibold text-sm text-gray-900 mb-1 leading-tight">{selected.title}</p>

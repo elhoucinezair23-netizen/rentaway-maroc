@@ -1,5 +1,6 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { MapPin, Star, Car, Bike, Anchor, Waves, ShieldCheck } from "lucide-react";
@@ -38,7 +39,8 @@ const NEW_THRESHOLD_MS = 7 * 24 * 60 * 60 * 1000;
 export function VehicleCard({ vehicle }: VehicleCardProps) {
   const { t } = useTranslation();
   const CategoryIcon = CATEGORY_ICONS[vehicle.category];
-  const imgSrc = vehicle.images?.[0] || CATEGORY_FALLBACK[vehicle.category];
+  const initialSrc = vehicle.images?.[0] || CATEGORY_FALLBACK[vehicle.category];
+  const [imgSrc, setImgSrc] = useState(initialSrc);
 
   const isNew = vehicle.createdAt
     ? Date.now() - new Date(vehicle.createdAt).getTime() < NEW_THRESHOLD_MS
@@ -56,6 +58,11 @@ export function VehicleCard({ vehicle }: VehicleCardProps) {
             fill
             className="object-cover group-hover:scale-105 transition-transform duration-500"
             unoptimized
+            onError={() => {
+              if (imgSrc !== CATEGORY_FALLBACK[vehicle.category]) {
+                setImgSrc(CATEGORY_FALLBACK[vehicle.category]);
+              }
+            }}
           />
 
           {/* Category badge */}

@@ -132,7 +132,17 @@ export default function MessagesPage() {
                   className={`w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-left ${selectedId === c.partnerId ? "bg-primary-50 border-r-2 border-primary-600" : ""}`}
                 >
                   {c.partnerAvatar ? (
-                    <Image src={c.partnerAvatar} alt="" width={36} height={36} className="rounded-full" />
+                    <Image
+                      src={c.partnerAvatar}
+                      alt=""
+                      width={36}
+                      height={36}
+                      className="rounded-full"
+                      unoptimized
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).style.display = "none";
+                      }}
+                    />
                   ) : (
                     <div className="w-9 h-9 rounded-full bg-gray-200 flex items-center justify-center">
                       <User className="h-4 w-4 text-gray-400" />

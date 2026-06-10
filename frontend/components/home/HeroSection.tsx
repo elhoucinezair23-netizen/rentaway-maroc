@@ -12,11 +12,14 @@ export function HeroSection() {
   return (
     <section className="relative min-h-[640px] md:min-h-[720px] flex items-center overflow-hidden">
       {/* Background image */}
-      <div className="absolute inset-0 z-0">
+      <div className="absolute inset-0 z-0 bg-secondary-700">
         <img
           src="https://images.unsplash.com/photo-1489749798305-4fea3ae63d43?w=1920"
           alt="Paysage marocain"
           className="w-full h-full object-cover"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).style.display = "none";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-b from-secondary-900/70 via-secondary-800/55 to-secondary-900/80" />
       </div>

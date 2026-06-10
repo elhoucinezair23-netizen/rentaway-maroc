@@ -15,6 +15,9 @@ const CITIES = [
   { name: "Oujda",      img: "https://images.unsplash.com/photo-1549880338-65ddcdfd017b?w=800", count: 41  },
 ];
 
+const cityFallback = (name: string) =>
+  `https://placehold.co/800x600/1D3557/E63946?text=${encodeURIComponent(name)}`;
+
 export function CitiesSection() {
   const { t } = useTranslation();
 
@@ -43,6 +46,11 @@ export function CitiesSection() {
                   src={img}
                   alt={name}
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                  onError={(e) => {
+                    const el = e.currentTarget as HTMLImageElement;
+                    const fb = cityFallback(name);
+                    if (el.src !== fb) el.src = fb;
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                 <div className="absolute inset-x-0 bottom-0 p-4 lg:p-5 text-white">

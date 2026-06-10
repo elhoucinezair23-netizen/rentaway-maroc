@@ -55,6 +55,12 @@ export function Testimonials() {
                   src={t.avatar}
                   alt={t.name}
                   className="h-12 w-12 rounded-full object-cover ring-2 ring-primary-100"
+                  onError={(e) => {
+                    const el = e.currentTarget as HTMLImageElement;
+                    const initials = t.name.split(" ").map((p) => p[0]).join("").slice(0, 2);
+                    const fb = `https://placehold.co/100x100/E63946/ffffff?text=${initials}`;
+                    if (el.src !== fb) el.src = fb;
+                  }}
                 />
                 <div>
                   <p className="font-bold text-secondary-700">{t.name}</p>

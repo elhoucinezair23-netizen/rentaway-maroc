@@ -1,0 +1,69 @@
+# ─── RentaWay Maroc — Blueprint Render.com ───
+# Déploie automatiquement backend (Express+Prisma) + frontend (Next.js)
+# Base de données : Neon Postgres (déjà connectée via DATABASE_URL)
+
+services:
+  # ── Backend Express + Prisma ─────────────────────────
+  - type: web
+    name: rentaway-backend
+    runtime: node
+    rootDir: backend
+    plan: free
+    buildCommand: npm ci && npx prisma generate && npm run build
+    startCommand: npm run start:prod
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 4000
+      - key: DATABASE_URL
+        value: postgresql://neondb_owner:npg_bCOH8oK0yaAj@ep-summer-snow-ab5kaj7k-pooler.eu-west-2.aws.neon.tech/neondb?sslmode=require&channel_binding=require
+      - key: JWT_SECRET
+        value: rentaway-jwt-secret-production-2026
+      - key: JWT_EXPIRES_IN
+        value: 7d
+      - key: PLATFORM_COMMISSION_RATE
+        value: "0.15"
+      - key: ALLOWED_ORIGINS
+        value: "*"
+      - key: STRIPE_SECRET_KEY
+        value: sk_test_placeholder
+      - key: STRIPE_WEBHOOK_SECRET
+        value: whsec_placeholder
+      - key: SMTP_HOST
+        value: smtp.gmail.com
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USER
+        value: placeholder@example.com
+      - key: SMTP_PASS
+        value: placeholder
+      - key: EMAIL_FROM
+        value: noreply@rentaway.ma
+      - key: ADMIN_EMAIL
+        value: admin@rentaway.ma
+      - key: CLOUDINARY_CLOUD_NAME
+        value: placeholder
+      - key: CLOUDINARY_API_KEY
+        value: placeholder
+      - key: CLOUDINARY_API_SECRET
+        value: placeholder
+
+  # ── Frontend Next.js ─────────────────────────────────
+  - type: web
+    name: rentaway-frontend
+    runtime: node
+    rootDir: frontend
+    plan: free
+    buildCommand: npm ci && npm run build
+    startCommand: npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: NEXT_PUBLIC_API_URL
+        sync: false   # à renseigner manuellement = https://rentaway-backend.onrender.com/api
+      - key: NEXTAUTH_URL
+        sync: false   # à renseigner manuellement = https://rentaway-frontend.onrender.com
+      - key: NEXTAUTH_SECRET
+        generateValue: true
