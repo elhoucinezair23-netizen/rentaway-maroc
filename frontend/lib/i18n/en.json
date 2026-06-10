@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "voitures": "Cars",
+    "motos": "Motorcycles",
+    "bateaux": "Boats",
+    "jetskis": "Jet-skis",
+    "villes": "Cities",
+    "connexion": "Sign in",
+    "publier": "List my vehicle"
+  },
+  "hero": {
+    "title": "Find the perfect vehicle",
+    "subtitle": "anywhere in Morocco",
+    "description": "Over 500 vehicles available in 27 Moroccan cities",
+    "rechercher": "Search",
+    "categorie": "CATEGORY",
+    "ville": "CITY",
+    "toutes": "All",
+    "toutesVilles": "All cities",
+    "du": "FROM",
+    "au": "TO",
+    "selectionner": "Select"
+  },
+  "categories": {
+    "title": "What do you want to rent?",
+    "voitures": "Cars",
+    "voituresSub": "City cars, SUV, Luxury",
+    "motos": "Motorcycles & Scooters",
+    "motosSub": "125cc to 650cc",
+    "bateaux": "Boats",
+    "bateauxSub": "RIBs, Sailboats, Yachts",
+    "jetskis": "Jet-skis",
+    "jetskisSub": "Solo or duo",
+    "decouvrir": "Discover",
+    "des": "From"
+  },
+  "popular": {
+    "title": "Popular vehicles",
+    "subtitle": "Most booked this week",
+    "voirTout": "View all",
+    "reserver": "Book",
+    "jour": "day",
+    "avis": "reviews"
+  },
+  "cities": {
+    "title": "Explore Morocco",
+    "subtitle": "Book your vehicle in the most beautiful cities",
+    "vehicules": "vehicles available"
+  },
+  "howItWorks": {
+    "title": "Book in 3 simple steps",
+    "step1": "Search",
+    "step1Desc": "Choose your city, dates and vehicle type.",
+    "step2": "Book",
+    "step2Desc": "Pay online securely. Instant confirmation.",
+    "step3": "Enjoy",
+    "step3Desc": "Pick up your vehicle and explore Morocco freely."
+  },
+  "newsletter": {
+    "title": "Get the best deals",
+    "placeholder": "your@email.com",
+    "button": "Subscribe",
+    "spam": "No spam. Exclusive offers only."
+  },
+  "footer": {
+    "droits": "All rights reserved",
+    "contact": "Contact",
+    "cgu": "Terms",
+    "confidentialite": "Privacy",
+    "devenirLoueur": "Become a renter",
+    "commentCaMarche": "How it works"
+  },
+  "search": {
+    "filtres": "Filters",
+    "reinitialiser": "Reset",
+    "ville": "City",
+    "categorie": "Category",
+    "tous": "All vehicles",
+    "prix": "Price / day (MAD)",
+    "noteMin": "Minimum rating",
+    "trouves": "vehicles found",
+    "plusRecents": "Most recent",
+    "prixCroissant": "Price ascending",
+    "mieuxNotes": "Best rated"
+  },
+  "vehicle": {
+    "prix": "Price",
+    "jour": "day",
+    "heure": "hour",
+    "reserver": "Book now",
+    "connecter": "Sign in to book",
+    "annulation": "Free cancellation up to 48h before",
+    "caution": "Deposit",
+    "debit": "You will only be charged upon vehicle handover"
+  },
+  "auth": {
+    "connexion": "Sign in",
+    "bonRetour": "Welcome back!",
+    "email": "Email",
+    "motDePasse": "Password",
+    "seConnecter": "Sign in",
+    "motDePasseOublie": "Forgot password?",
+    "creerCompte": "Create account",
+    "google": "Continue with Google"
+  }
+}

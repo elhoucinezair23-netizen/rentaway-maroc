@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "voitures": "Voitures",
+    "motos": "Motos",
+    "bateaux": "Bateaux",
+    "jetskis": "Jet-skis",
+    "villes": "Villes",
+    "connexion": "Connexion",
+    "publier": "Publier mon véhicule"
+  },
+  "hero": {
+    "title": "Trouvez le véhicule parfait",
+    "subtitle": "partout au Maroc",
+    "description": "Plus de 500 véhicules disponibles dans 27 villes marocaines",
+    "rechercher": "Rechercher",
+    "categorie": "CATÉGORIE",
+    "ville": "VILLE",
+    "toutes": "Toutes",
+    "toutesVilles": "Toutes les villes",
+    "du": "DU",
+    "au": "AU",
+    "selectionner": "Sélectionner"
+  },
+  "categories": {
+    "title": "Que voulez-vous louer ?",
+    "voitures": "Voitures",
+    "voituresSub": "Citadines, SUV, Luxe",
+    "motos": "Motos & Scooters",
+    "motosSub": "125cc à 650cc",
+    "bateaux": "Bateaux",
+    "bateauxSub": "Semi-rigides, Voiliers, Yachts",
+    "jetskis": "Jet-skis",
+    "jetskisSub": "Solo ou duo",
+    "decouvrir": "Découvrir",
+    "des": "Dès"
+  },
+  "popular": {
+    "title": "Véhicules populaires",
+    "subtitle": "Les plus réservés cette semaine",
+    "voirTout": "Voir tout",
+    "reserver": "Réserver",
+    "jour": "jour",
+    "avis": "avis"
+  },
+  "cities": {
+    "title": "Explorez le Maroc",
+    "subtitle": "Réservez votre véhicule dans les plus belles villes",
+    "vehicules": "véhicules disponibles"
+  },
+  "howItWorks": {
+    "title": "Réservez en 3 étapes simples",
+    "step1": "Recherchez",
+    "step1Desc": "Choisissez votre ville, vos dates et le type de véhicule.",
+    "step2": "Réservez",
+    "step2Desc": "Payez en ligne en toute sécurité. Confirmation immédiate.",
+    "step3": "Profitez",
+    "step3Desc": "Récupérez votre véhicule et explorez le Maroc librement."
+  },
+  "newsletter": {
+    "title": "Recevez les meilleures offres",
+    "placeholder": "votre@email.com",
+    "button": "S'abonner",
+    "spam": "Pas de spam. Offres exclusives uniquement."
+  },
+  "footer": {
+    "droits": "Tous droits réservés",
+    "contact": "Contact",
+    "cgu": "CGU",
+    "confidentialite": "Confidentialité",
+    "devenirLoueur": "Devenir loueur",
+    "commentCaMarche": "Comment ça marche"
+  },
+  "search": {
+    "filtres": "Filtres",
+    "reinitialiser": "Réinitialiser",
+    "ville": "Ville",
+    "categorie": "Catégorie",
+    "tous": "Tous les véhicules",
+    "prix": "Prix / jour (MAD)",
+    "noteMin": "Note minimum",
+    "trouves": "véhicules trouvés",
+    "plusRecents": "Plus récents",
+    "prixCroissant": "Prix croissant",
+    "mieuxNotes": "Mieux notés"
+  },
+  "vehicle": {
+    "prix": "Prix",
+    "jour": "jour",
+    "heure": "heure",
+    "reserver": "Réserver maintenant",
+    "connecter": "Se connecter pour réserver",
+    "annulation": "Annulation gratuite 48h à l'avance",
+    "caution": "Caution",
+    "debit": "Vous ne serez débité qu'à la remise du véhicule"
+  },
+  "auth": {
+    "connexion": "Connexion",
+    "bonRetour": "Bon retour parmi nous !",
+    "email": "Email",
+    "motDePasse": "Mot de passe",
+    "seConnecter": "Se connecter",
+    "motDePasseOublie": "Mot de passe oublié ?",
+    "creerCompte": "Créer un compte",
+    "google": "Continuer avec Google"
+  }
+}

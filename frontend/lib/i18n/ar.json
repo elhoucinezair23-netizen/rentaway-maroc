@@ -1,0 +1,106 @@
+{
+  "nav": {
+    "voitures": "سيارات",
+    "motos": "دراجات نارية",
+    "bateaux": "قوارب",
+    "jetskis": "جيت سكي",
+    "villes": "المدن",
+    "connexion": "تسجيل الدخول",
+    "publier": "أضف مركبتك"
+  },
+  "hero": {
+    "title": "اعثر على المركبة المثالية",
+    "subtitle": "في جميع أنحاء المغرب",
+    "description": "أكثر من 500 مركبة متوفرة في 27 مدينة مغربية",
+    "rechercher": "بحث",
+    "categorie": "الفئة",
+    "ville": "المدينة",
+    "toutes": "الكل",
+    "toutesVilles": "جميع المدن",
+    "du": "من",
+    "au": "إلى",
+    "selectionner": "اختيار"
+  },
+  "categories": {
+    "title": "ماذا تريد أن تكتري؟",
+    "voitures": "سيارات",
+    "voituresSub": "صغيرة، SUV، فاخرة",
+    "motos": "دراجات وسكوتر",
+    "motosSub": "125cc إلى 650cc",
+    "bateaux": "قوارب",
+    "bateauxSub": "شبه صلبة، شراعية، يخوت",
+    "jetskis": "جيت سكي",
+    "jetskisSub": "فردي أو ثنائي",
+    "decouvrir": "اكتشف",
+    "des": "ابتداءً من"
+  },
+  "popular": {
+    "title": "المركبات الأكثر شعبية",
+    "subtitle": "الأكثر حجزاً هذا الأسبوع",
+    "voirTout": "عرض الكل",
+    "reserver": "احجز",
+    "jour": "يوم",
+    "avis": "تقييم"
+  },
+  "cities": {
+    "title": "اكتشف المغرب",
+    "subtitle": "احجز مركبتك في أجمل المدن",
+    "vehicules": "مركبة متوفرة"
+  },
+  "howItWorks": {
+    "title": "احجز في 3 خطوات بسيطة",
+    "step1": "ابحث",
+    "step1Desc": "اختر مدينتك وتواريخك ونوع المركبة",
+    "step2": "احجز",
+    "step2Desc": "ادفع عبر الإنترنت بأمان. تأكيد فوري",
+    "step3": "استمتع",
+    "step3Desc": "استلم مركبتك واستكشف المغرب بحرية"
+  },
+  "newsletter": {
+    "title": "احصل على أفضل العروض",
+    "placeholder": "بريدك@الإلكتروني.com",
+    "button": "اشترك",
+    "spam": "بدون إزعاج. عروض حصرية فقط."
+  },
+  "footer": {
+    "droits": "جميع الحقوق محفوظة",
+    "contact": "اتصل بنا",
+    "cgu": "الشروط العامة",
+    "confidentialite": "السرية",
+    "devenirLoueur": "كن مكرياً",
+    "commentCaMarche": "كيف يعمل"
+  },
+  "search": {
+    "filtres": "فلاتر",
+    "reinitialiser": "إعادة تعيين",
+    "ville": "المدينة",
+    "categorie": "الفئة",
+    "tous": "جميع المركبات",
+    "prix": "السعر / يوم (درهم)",
+    "noteMin": "الحد الأدنى للتقييم",
+    "trouves": "مركبة وُجدت",
+    "plusRecents": "الأحدث",
+    "prixCroissant": "السعر تصاعدي",
+    "mieuxNotes": "الأفضل تقييماً"
+  },
+  "vehicle": {
+    "prix": "السعر",
+    "jour": "يوم",
+    "heure": "ساعة",
+    "reserver": "احجز الآن",
+    "connecter": "سجل دخولك للحجز",
+    "annulation": "إلغاء مجاني قبل 48 ساعة",
+    "caution": "كفالة",
+    "debit": "لن يتم خصم المبلغ إلا عند استلام المركبة"
+  },
+  "auth": {
+    "connexion": "تسجيل الدخول",
+    "bonRetour": "مرحباً بعودتك!",
+    "email": "البريد الإلكتروني",
+    "motDePasse": "كلمة المرور",
+    "seConnecter": "تسجيل الدخول",
+    "motDePasseOublie": "نسيت كلمة المرور؟",
+    "creerCompte": "إنشاء حساب",
+    "google": "المتابعة مع جوجل"
+  }
+}
