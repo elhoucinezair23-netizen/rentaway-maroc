@@ -37,6 +37,7 @@ const CITY_GPS: Record<string, { lat: number; lng: number }> = {
   Marrakech: { lat: 31.6295, lng: -7.9811 },
   Mdiq: { lat: 35.6833, lng: -5.3167 },
   Meknès: { lat: 33.8731, lng: -5.5407 },
+  Mohammedia: { lat: 33.6841, lng: -7.3833 },
   Nador: { lat: 35.1681, lng: -2.9335 },
   Ouarzazate: { lat: 30.9335, lng: -6.937 },
   Oujda: { lat: 34.6867, lng: -1.9114 },
@@ -425,74 +426,201 @@ function randInt(min: number, max: number) {
 }
 
 const carData = [
+  // ── 6 grandes villes (≥ 5 véhicules) ─────────────────
+  // Casablanca
   { titre: "Dacia Logan 2023", ville: "Casablanca", prix: 350 },
-  { titre: "Dacia Sandero Stepway", ville: "Marrakech", prix: 400 },
-  { titre: "Renault Clio 5", ville: "Agadir", prix: 380 },
-  { titre: "Hyundai Tucson 2023", ville: "Rabat", prix: 650 },
-  { titre: "Toyota Corolla", ville: "Tanger", prix: 500 },
-  { titre: "Volkswagen Polo", ville: "Fès", prix: 420 },
   { titre: "Peugeot 208", ville: "Casablanca", prix: 400 },
-  { titre: "Duster 4x4", ville: "Marrakech", prix: 700 },
-  { titre: "Mercedes Classe A", ville: "Marrakech", prix: 1200 },
-  { titre: "Ford Kuga", ville: "Agadir", prix: 750 },
   { titre: "Kia Sportage", ville: "Casablanca", prix: 680 },
-  { titre: "Seat Ibiza", ville: "Rabat", prix: 390 },
-  { titre: "Renault Captur", ville: "Tanger", prix: 550 },
-  { titre: "Dacia Duster", ville: "Ouarzazate", prix: 600 },
-  { titre: "Peugeot 3008", ville: "Agadir", prix: 800 },
-  { titre: "Citroën C3", ville: "Fès", prix: 360 },
-  { titre: "Toyota RAV4", ville: "Marrakech", prix: 900 },
-  { titre: "Hyundai i20", ville: "Casablanca", prix: 340 },
-  { titre: "Ford Focus", ville: "Rabat", prix: 450 },
   { titre: "BMW Série 3", ville: "Casablanca", prix: 1500 },
+  { titre: "Hyundai i20", ville: "Casablanca", prix: 340 },
+  // Marrakech
+  { titre: "Dacia Sandero Stepway", ville: "Marrakech", prix: 400 },
+  { titre: "Mercedes Classe A", ville: "Marrakech", prix: 1200 },
+  { titre: "Toyota RAV4", ville: "Marrakech", prix: 900 },
+  { titre: "Dacia Duster 4x4", ville: "Marrakech", prix: 700 },
+  { titre: "Renault Clio 5", ville: "Marrakech", prix: 380 },
+  // Rabat
+  { titre: "Hyundai Tucson 2023", ville: "Rabat", prix: 650 },
+  { titre: "Seat Ibiza", ville: "Rabat", prix: 390 },
+  { titre: "Peugeot 3008", ville: "Rabat", prix: 800 },
+  { titre: "Volkswagen Golf 7", ville: "Rabat", prix: 520 },
+  { titre: "Ford Focus", ville: "Rabat", prix: 450 },
+  // Fès
+  { titre: "Volkswagen Polo", ville: "Fès", prix: 420 },
+  { titre: "Citroën C3", ville: "Fès", prix: 360 },
+  { titre: "Toyota Yaris", ville: "Fès", prix: 410 },
+  { titre: "Renault Mégane", ville: "Fès", prix: 420 },
+  { titre: "Fiat Tipo", ville: "Fès", prix: 400 },
+  // Tanger
+  { titre: "Toyota Corolla", ville: "Tanger", prix: 500 },
+  { titre: "Renault Captur", ville: "Tanger", prix: 550 },
+  { titre: "Ford Kuga", ville: "Tanger", prix: 750 },
+  { titre: "Skoda Octavia", ville: "Tanger", prix: 600 },
+  // Oujda
   { titre: "Renault Mégane", ville: "Oujda", prix: 420 },
   { titre: "Dacia Lodgy 7 places", ville: "Oujda", prix: 480 },
-  { titre: "Peugeot 301", ville: "Béni Mellal", prix: 360 },
-  { titre: "Hyundai Accent", ville: "Kenitra", prix: 370 },
-  { titre: "Volkswagen Golf 7", ville: "El Jadida", prix: 520 },
+  { titre: "Hyundai Accent", ville: "Oujda", prix: 370 },
+  { titre: "Peugeot 301", ville: "Oujda", prix: 380 },
+  { titre: "Suzuki Swift", ville: "Oujda", prix: 360 },
+
+  // ── 9 côtières non-grandes ────────────────────────────
+  // Agadir
+  { titre: "Renault Clio 5", ville: "Agadir", prix: 380 },
+  { titre: "Ford Kuga", ville: "Agadir", prix: 750 },
+  { titre: "Peugeot 3008", ville: "Agadir", prix: 800 },
+  // Essaouira
+  { titre: "Dacia Logan 2023", ville: "Essaouira", prix: 360 },
+  { titre: "Renault Captur", ville: "Essaouira", prix: 540 },
+  // Dakhla
+  { titre: "Dacia Duster 4x4", ville: "Dakhla", prix: 720 },
+  { titre: "Toyota Yaris", ville: "Dakhla", prix: 400 },
+  // Al Hoceima
+  { titre: "Hyundai Accent", ville: "Al Hoceima", prix: 370 },
+  { titre: "Dacia Sandero Stepway", ville: "Al Hoceima", prix: 410 },
+  // Nador
+  { titre: "Peugeot 208", ville: "Nador", prix: 390 },
+  { titre: "Renault Mégane", ville: "Nador", prix: 430 },
+  // Safi
   { titre: "Suzuki Swift", ville: "Safi", prix: 350 },
-  { titre: "Toyota Yaris", ville: "Laâyoune", prix: 410 },
-  { titre: "Renault Kangoo", ville: "Chefchaouen", prix: 460 },
-  { titre: "Skoda Octavia", ville: "Ifrane", prix: 600 },
-  { titre: "Citroën C-Elysée", ville: "Khouribga", prix: 360 },
-  { titre: "Dacia Logan MCV", ville: "Kenitra", prix: 380 },
+  { titre: "Citroën C3", ville: "Safi", prix: 380 },
+  // El Jadida
+  { titre: "Volkswagen Golf 7", ville: "El Jadida", prix: 520 },
   { titre: "Fiat Tipo", ville: "El Jadida", prix: 400 },
+  // Mohammedia
+  { titre: "Hyundai i20", ville: "Mohammedia", prix: 350 },
+  { titre: "Toyota Yaris", ville: "Mohammedia", prix: 410 },
+  // Mdiq
+  { titre: "Renault Clio 5", ville: "Mdiq", prix: 390 },
+
+  // ── 13 intérieures non-grandes ───────────────────────
+  // Tétouan
+  { titre: "Dacia Logan 2023", ville: "Tétouan", prix: 360 },
+  { titre: "Peugeot 208", ville: "Tétouan", prix: 400 },
+  // Meknès
+  { titre: "Renault Mégane", ville: "Meknès", prix: 430 },
+  { titre: "Volkswagen Polo", ville: "Meknès", prix: 410 },
+  // Béni Mellal
+  { titre: "Peugeot 301", ville: "Béni Mellal", prix: 360 },
+  { titre: "Hyundai Accent", ville: "Béni Mellal", prix: 370 },
+  // Kenitra
+  { titre: "Hyundai Accent", ville: "Kenitra", prix: 370 },
+  { titre: "Dacia Logan MCV", ville: "Kenitra", prix: 380 },
+  // Khouribga
+  { titre: "Citroën C-Elysée", ville: "Khouribga", prix: 360 },
+  { titre: "Dacia Sandero Stepway", ville: "Khouribga", prix: 390 },
+  // Ouarzazate
+  { titre: "Dacia Duster", ville: "Ouarzazate", prix: 600 },
+  { titre: "Toyota RAV4", ville: "Ouarzazate", prix: 850 },
+  // Ifrane
+  { titre: "Skoda Octavia", ville: "Ifrane", prix: 600 },
+  { titre: "Dacia Duster 4x4", ville: "Ifrane", prix: 700 },
+  // Chefchaouen
+  { titre: "Renault Kangoo", ville: "Chefchaouen", prix: 460 },
+  { titre: "Peugeot 208", ville: "Chefchaouen", prix: 410 },
+  // Laâyoune
+  { titre: "Toyota Yaris", ville: "Laâyoune", prix: 410 },
+  { titre: "Hyundai i20", ville: "Laâyoune", prix: 380 },
+  // Berkane
+  { titre: "Hyundai Accent", ville: "Berkane", prix: 360 },
+  { titre: "Renault Clio 5", ville: "Berkane", prix: 380 },
+  // Guelmim
+  { titre: "Dacia Logan 2023", ville: "Guelmim", prix: 350 },
+  { titre: "Dacia Duster 4x4", ville: "Guelmim", prix: 680 },
+  // Guercif
+  { titre: "Peugeot 301", ville: "Guercif", prix: 360 },
+  { titre: "Dacia Sandero Stepway", ville: "Guercif", prix: 390 },
+  // Taourirt
+  { titre: "Renault Mégane", ville: "Taourirt", prix: 420 },
+  { titre: "Toyota Yaris", ville: "Taourirt", prix: 400 },
 ];
 
 const motoData = [
-  { titre: "Honda CB 125cc", ville: "Marrakech", prix: 200, type: "routière", cyl: 125, permis: "A2" },
+  // Grandes villes (2 motos pour Casa et Marrakech, 1 pour les autres)
   { titre: "Yamaha MT-07", ville: "Casablanca", prix: 600, type: "sportive", cyl: 689, permis: "A" },
-  { titre: "Suzuki Burgman scooter", ville: "Agadir", prix: 250, type: "scooter", cyl: 200, permis: "A2" },
-  { titre: "Kawasaki Z650", ville: "Tanger", prix: 550, type: "sportive", cyl: 649, permis: "A" },
+  { titre: "KTM Duke 390", ville: "Casablanca", prix: 580, type: "sportive", cyl: 373, permis: "A" },
+  { titre: "Honda CB 125cc", ville: "Marrakech", prix: 200, type: "routière", cyl: 125, permis: "A2" },
   { titre: "Royal Enfield Himalayan", ville: "Marrakech", prix: 700, type: "trail", cyl: 411, permis: "A" },
   { titre: "Honda PCX 125", ville: "Rabat", prix: 220, type: "scooter", cyl: 125, permis: "A2" },
-  { titre: "Yamaha XMAX 300", ville: "Agadir", prix: 350, type: "scooter", cyl: 300, permis: "A2" },
-  { titre: "KTM Duke 390", ville: "Casablanca", prix: 580, type: "sportive", cyl: 373, permis: "A" },
+  { titre: "Yamaha NMAX 155", ville: "Fès", prix: 230, type: "scooter", cyl: 155, permis: "A2" },
+  { titre: "Kawasaki Z650", ville: "Tanger", prix: 550, type: "sportive", cyl: 649, permis: "A" },
   { titre: "Honda CBR 500R", ville: "Oujda", prix: 450, type: "sportive", cyl: 471, permis: "A2" },
-  { titre: "Yamaha NMAX 155", ville: "Oujda", prix: 230, type: "scooter", cyl: 155, permis: "A2" },
+
+  // Côtières non-grandes (1 moto chacune)
+  { titre: "Yamaha XMAX 300", ville: "Agadir", prix: 350, type: "scooter", cyl: 300, permis: "A2" },
+  { titre: "Suzuki Burgman scooter", ville: "Essaouira", prix: 250, type: "scooter", cyl: 200, permis: "A2" },
+  { titre: "BMW G310 GS trail", ville: "Dakhla", prix: 500, type: "trail", cyl: 313, permis: "A2" },
+  { titre: "Honda CB 125cc", ville: "Al Hoceima", prix: 210, type: "routière", cyl: 125, permis: "A2" },
+  { titre: "Yamaha NMAX 155", ville: "Nador", prix: 230, type: "scooter", cyl: 155, permis: "A2" },
+  { titre: "Honda PCX 125", ville: "Safi", prix: 220, type: "scooter", cyl: 125, permis: "A2" },
+  { titre: "Yamaha MT-07", ville: "El Jadida", prix: 580, type: "sportive", cyl: 689, permis: "A" },
+  { titre: "Suzuki GSX-S 750", ville: "Mohammedia", prix: 620, type: "sportive", cyl: 749, permis: "A" },
+  { titre: "Honda CB 125cc", ville: "Mdiq", prix: 210, type: "routière", cyl: 125, permis: "A2" },
+
+  // Intérieures non-grandes (1 moto chacune)
+  { titre: "Suzuki GSX-S 750", ville: "Tétouan", prix: 600, type: "sportive", cyl: 749, permis: "A" },
+  { titre: "Yamaha XMAX 300", ville: "Meknès", prix: 340, type: "scooter", cyl: 300, permis: "A2" },
+  { titre: "Honda PCX 125", ville: "Béni Mellal", prix: 220, type: "scooter", cyl: 125, permis: "A2" },
   { titre: "Suzuki GSX-S 750", ville: "Kenitra", prix: 620, type: "sportive", cyl: 749, permis: "A" },
+  { titre: "Honda CB 125cc", ville: "Khouribga", prix: 200, type: "routière", cyl: 125, permis: "A2" },
+  { titre: "Royal Enfield Himalayan", ville: "Ouarzazate", prix: 680, type: "trail", cyl: 411, permis: "A" },
+  { titre: "BMW G310 GS trail", ville: "Ifrane", prix: 500, type: "trail", cyl: 313, permis: "A2" },
   { titre: "BMW G310 GS trail", ville: "Chefchaouen", prix: 500, type: "trail", cyl: 313, permis: "A2" },
+  { titre: "Yamaha NMAX 155", ville: "Laâyoune", prix: 230, type: "scooter", cyl: 155, permis: "A2" },
+  { titre: "Honda CBR 500R", ville: "Berkane", prix: 450, type: "sportive", cyl: 471, permis: "A2" },
+  { titre: "KTM Duke 390", ville: "Guelmim", prix: 560, type: "sportive", cyl: 373, permis: "A" },
+  { titre: "Yamaha NMAX 155", ville: "Guercif", prix: 230, type: "scooter", cyl: 155, permis: "A2" },
+  { titre: "Honda PCX 125", ville: "Taourirt", prix: 220, type: "scooter", cyl: 125, permis: "A2" },
 ];
 
 const boatData = [
+  // Agadir (2)
   { titre: "Semi-rigide 6 places", ville: "Agadir", prixHeure: 1500, longueur: 6, capacite: 6, moteur: 150, skipper: false, permis: "côtier", zone: "Côte d'Agadir" },
-  { titre: "Barque moteur 4 places", ville: "Essaouira", prixHeure: 800, longueur: 4, capacite: 4, moteur: 60, skipper: false, permis: "côtier", zone: "Baie d'Essaouira" },
-  { titre: "Voilier 8 places + skipper", ville: "Dakhla", prixJour: 4000, longueur: 12, capacite: 8, moteur: 80, skipper: true, permis: "aucun", zone: "Lagune de Dakhla" },
-  { titre: "Yacht 10 places", ville: "Mdiq", prixJour: 8000, longueur: 15, capacite: 10, moteur: 350, skipper: true, permis: "aucun", zone: "Côte méditerranéenne" },
-  { titre: "Semi-rigide plongée", ville: "Al Hoceima", prixHeure: 1200, longueur: 7, capacite: 8, moteur: 200, skipper: true, permis: "aucun", zone: "Parc National d'Al Hoceima" },
-  { titre: "Barque pêche traditionnelle", ville: "Nador", prixHeure: 600, longueur: 5, capacite: 4, moteur: 40, skipper: true, permis: "aucun", zone: "Lagune de Marchica" },
-  { titre: "Semi-rigide 8 places", ville: "Tanger", prixHeure: 1800, longueur: 7, capacite: 8, moteur: 200, skipper: false, permis: "côtier", zone: "Détroit de Gibraltar" },
   { titre: "Catamaran 12 places", ville: "Agadir", prixJour: 12000, longueur: 12, capacite: 12, moteur: 250, skipper: true, permis: "aucun", zone: "Côte d'Agadir" },
+  // Essaouira (2)
+  { titre: "Barque moteur 4 places", ville: "Essaouira", prixHeure: 800, longueur: 4, capacite: 4, moteur: 60, skipper: false, permis: "côtier", zone: "Baie d'Essaouira" },
+  { titre: "Voilier 8 places + skipper", ville: "Essaouira", prixJour: 3500, longueur: 11, capacite: 8, moteur: 80, skipper: true, permis: "aucun", zone: "Côte atlantique" },
+  // Tanger (2)
+  { titre: "Semi-rigide 8 places", ville: "Tanger", prixHeure: 1800, longueur: 7, capacite: 8, moteur: 200, skipper: false, permis: "côtier", zone: "Détroit de Gibraltar" },
+  { titre: "Yacht 10 places", ville: "Tanger", prixJour: 9000, longueur: 14, capacite: 10, moteur: 320, skipper: true, permis: "aucun", zone: "Détroit de Gibraltar" },
+  // Dakhla (2)
+  { titre: "Voilier 8 places + skipper", ville: "Dakhla", prixJour: 4000, longueur: 12, capacite: 8, moteur: 80, skipper: true, permis: "aucun", zone: "Lagune de Dakhla" },
+  { titre: "Semi-rigide 6 places", ville: "Dakhla", prixHeure: 1400, longueur: 6, capacite: 6, moteur: 150, skipper: false, permis: "côtier", zone: "Lagune de Dakhla" },
+  // Al Hoceima (1)
+  { titre: "Semi-rigide plongée", ville: "Al Hoceima", prixHeure: 1200, longueur: 7, capacite: 8, moteur: 200, skipper: true, permis: "aucun", zone: "Parc National d'Al Hoceima" },
+  // Nador (1)
+  { titre: "Barque pêche traditionnelle", ville: "Nador", prixHeure: 600, longueur: 5, capacite: 4, moteur: 40, skipper: true, permis: "aucun", zone: "Lagune de Marchica" },
+  // Safi (1)
+  { titre: "Barque moteur 4 places", ville: "Safi", prixHeure: 750, longueur: 4, capacite: 4, moteur: 60, skipper: false, permis: "côtier", zone: "Port de Safi" },
+  // El Jadida (1)
+  { titre: "Semi-rigide 6 places", ville: "El Jadida", prixHeure: 1300, longueur: 6, capacite: 6, moteur: 150, skipper: false, permis: "côtier", zone: "Côte atlantique" },
+  // Mohammedia (1)
+  { titre: "Yacht 10 places", ville: "Mohammedia", prixJour: 8500, longueur: 14, capacite: 10, moteur: 320, skipper: true, permis: "aucun", zone: "Côte atlantique" },
+  // Mdiq (1)
+  { titre: "Yacht 10 places", ville: "Mdiq", prixJour: 8000, longueur: 15, capacite: 10, moteur: 350, skipper: true, permis: "aucun", zone: "Côte méditerranéenne" },
 ];
 
 const jetskiData = [
+  // Agadir (2)
   { titre: "Sea-Doo Spark 1 place", ville: "Agadir", prixHeure: 400, puissance: 90, capacite: 1, age: 18, comb: false },
   { titre: "Yamaha WaveRunner 2 places", ville: "Agadir", prixHeure: 600, puissance: 180, capacite: 2, age: 18, comb: true },
-  { titre: "Sea-Doo GTI 2 places", ville: "Dakhla", prixHeure: 500, puissance: 130, capacite: 2, age: 18, comb: true },
-  { titre: "Kawasaki Jet Ski STX", ville: "Mdiq", prixHeure: 550, puissance: 160, capacite: 2, age: 18, comb: true },
-  { titre: "Sea-Doo RXP-X sport", ville: "Agadir", prixHeure: 700, puissance: 300, capacite: 2, age: 21, comb: true },
-  { titre: "Yamaha FX Cruiser", ville: "Tanger", prixHeure: 580, puissance: 180, capacite: 2, age: 18, comb: true },
+  // Essaouira (1)
   { titre: "Sea-Doo GTX 2 places", ville: "Essaouira", prixHeure: 520, puissance: 130, capacite: 2, age: 18, comb: true },
+  // Tanger (1)
+  { titre: "Yamaha FX Cruiser", ville: "Tanger", prixHeure: 580, puissance: 180, capacite: 2, age: 18, comb: true },
+  // Dakhla (1)
+  { titre: "Sea-Doo GTI 2 places", ville: "Dakhla", prixHeure: 500, puissance: 130, capacite: 2, age: 18, comb: true },
+  // Al Hoceima (1)
+  { titre: "Sea-Doo Spark 1 place", ville: "Al Hoceima", prixHeure: 400, puissance: 90, capacite: 1, age: 18, comb: false },
+  // Nador (1)
+  { titre: "Yamaha WaveRunner 2 places", ville: "Nador", prixHeure: 580, puissance: 180, capacite: 2, age: 18, comb: true },
+  // Safi (1)
+  { titre: "Sea-Doo GTI 2 places", ville: "Safi", prixHeure: 490, puissance: 130, capacite: 2, age: 18, comb: true },
+  // El Jadida (1)
+  { titre: "Kawasaki Jet Ski STX", ville: "El Jadida", prixHeure: 540, puissance: 160, capacite: 2, age: 18, comb: true },
+  // Mohammedia (1)
+  { titre: "Sea-Doo RXP-X sport", ville: "Mohammedia", prixHeure: 700, puissance: 300, capacite: 2, age: 21, comb: true },
+  // Mdiq (1)
+  { titre: "Kawasaki Jet Ski STX", ville: "Mdiq", prixHeure: 550, puissance: 160, capacite: 2, age: 18, comb: true },
 ];
 
 function describeCar(d: typeof carData[0], specs: any): string {
